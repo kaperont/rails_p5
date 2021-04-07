@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<strong>Courses:</strong><br/>
+<% @plan.course.each do |Course| %>
+  <%= Course.Name %><br/>
+<%end%>
+
+<%= link_to 'Edit', edit_plan_path(@plan) %> |
+<%= link_to 'Back', plans_path %>
