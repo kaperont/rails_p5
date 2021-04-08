@@ -1,0 +1,169 @@
+<p id="notice"><%= notice %></p>
+
+<body onload="load()">
+
+    <div id="page-container">
+
+        <!--------HEADER DIVISION-------->
+        <div id="header">
+
+            <!--------HEADER CU LOGO-------->
+            <a id="logo-link" href="https://www.cedarville.edu">
+                <img id="logo" alt="CU-Logo" src="../img/CU-logo-1.png">
+            </a>
+
+            <!--------HEADER TITLE-------->
+            <h2 id="header-title">Academic Planning</h2>
+
+            <!--------WEBSITE VERSION-------->
+            <p id="version-number">version 1.0</p>
+
+            <!--------HEADER BUTTONS CONTAINER-------->
+            <div id="header-options">
+
+                <!--------JUDAH BUTTON-------->
+                <a class="header-button" id="judah-button" href="http://judah.cedarville.edu/peopleschoice/index.php">
+                    <p class="header-button-text">Judah</p>
+                </a>
+                <!--------HOME BUTTON-------->
+                <a class="header-button" id="home-button" href="../../cs3220.html">
+                    <p class="header-button-text">Home</p>
+                </a>
+                <!--------SAVE BUTTON-------->
+                <a class="header-button" id="save-button">
+                    <p class="header-button-text">Save</p>
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!--------MAIN CONTAINER-------->
+        <div id="main-container">
+
+
+            <!--------LEFT DIVISION-------->
+            <div id="left">
+
+
+                <!--------REQUIREMENTS DIVISION-------->
+                <script src="../js/setAccordion.js"></script>
+
+                <div class="requirements-division">
+                    <div class="section-title">Requirements</div>
+                    <div id="req-table", class="ui-widget-content">
+                        <div id="accordion">
+                            <h3>Core</h3>
+                            <div class="accord-content" id="accord-div-1"></div>
+
+
+                            <% @plan.major.requirements.each do |test| %>
+                              <%= test.name %>
+                            <%end%>
+
+
+                            <h3>Electives</h3>
+                            <div class="accord-content" id="accord-div-2"></div>
+                            <h3>Cognates</h3>
+                            <div class="accord-content" id="accord-div-3"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <!--------/REQUIREMENTS DIVISION-------->
+
+
+                <!--------VALIDATION STATUS DIVISION-------->
+                <div class="extras-section-division">
+                    <div class="section-title">Kelly Blue Book</div>
+                    <div class="extras-section-table">
+
+                        <div class="kbb-container">
+                            <script src="../js/kbb.js"></script>
+
+                            <select name="year" class="dropdown" id="drop-menu-1"></select>
+                            <select name="make" class="dropdown" id="drop-menu-2" disabled="true"></select>
+                            <select name="model" class="dropdown" id="drop-menu-3" disabled="true"></select>
+
+                        </div>
+                        
+                    </div>
+                </div>
+                <!--------/VALIDATION STATUS DIVISION-------->
+
+                
+            </div>
+            <!--------/LEFT DIVISION-------->
+
+
+
+
+            <!--------RIGHT DIVISION-------->
+            <div id="right">
+
+
+                <!--------SEMESTER DIVISION-------->
+                <div class="semester-division" id="sem-div">
+
+                    <!--------YEARS CONTAINER-------->
+                    <div class="years-container">
+
+                        <div id="first-year"></div>
+                        <div id="second-year"></div>
+                        <div id="third-year"></div>
+                        <div id="fourth-year"></div>
+
+                        <script src="../js/drag_and_drop.js"></script>
+
+                    </div>
+                    <!--------/YEARS CONTAINER-------->
+
+
+                </div>
+                <!--------/SEMESTER DIVISION-------->            
+
+
+                <!--------COURSE FINDER DIVISION-------->
+                <div class="course-finder-division">
+                    <div class="section-title">Course Finder</div>
+                    <div class="course-finder-table">
+
+                        <div class="course-finder-table-header">Course Finder</div>
+
+                        <div class="search-bar">
+                            <label for="search-box">Search
+                                <input type="text" placeholder="CS3220" name="search" class="search_box" id="search-box">
+                            </label>
+                            <p id="num-entries">Showing 1 to 12 of 1,900 entries</p>
+                        </div>
+
+                        <div class="course-database">
+                            <div id="course-id">
+                            </div>
+                            <div id="course-name">
+                            </div>
+                            <div id="course-credits">
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <!--------/COURSE FINDER DIVISION-------->
+
+
+            </div>
+            <!--------/RIGHT DIVISION-------->
+
+
+        </div>
+        <!--------/MAIN CONTAINER-------->
+
+    </div>
+    
+</body>
+
+<%= link_to 'Edit', edit_plan_path(@plan) %> |
+<%= link_to 'Back', plans_path %>
