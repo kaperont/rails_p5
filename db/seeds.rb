@@ -87,17 +87,17 @@ category9.save!
 
 
 # Create Requirements
-Requirement.create(catalog_id: cat1.id, major_id: maj1.id, category_id: category1)
-Requirement.create(catalog_id: cat1.id, major_id: maj1.id, category_id: category2)
-Requirement.create(catalog_id: cat1.id, major_id: maj1.id, category_id: category3)
+Requirement.create(catalog_id: cat1.id, major_id: maj1.id, category_id: category1.id)
+Requirement.create(catalog_id: cat1.id, major_id: maj1.id, category_id: category2.id)
+Requirement.create(catalog_id: cat1.id, major_id: maj1.id, category_id: category3.id)
 
-Requirement.create(catalog_id: cat1.id, major_id: maj2.id, category_id: category4)
-Requirement.create(catalog_id: cat1.id, major_id: maj2.id, category_id: category5)
-Requirement.create(catalog_id: cat1.id, major_id: maj2.id, category_id: category6)
+Requirement.create(catalog_id: cat1.id, major_id: maj2.id, category_id: category4.id)
+Requirement.create(catalog_id: cat1.id, major_id: maj2.id, category_id: category5.id)
+Requirement.create(catalog_id: cat1.id, major_id: maj2.id, category_id: category6.id)
 
-Requirement.create(catalog_id: cat1.id, major_id: maj3.id, category_id: category7)
-Requirement.create(catalog_id: cat1.id, major_id: maj3.id, category_id: category8)
-Requirement.create(catalog_id: cat1.id, major_id: maj3.id, category_id: category9)
+Requirement.create(catalog_id: cat1.id, major_id: maj3.id, category_id: category7.id)
+Requirement.create(catalog_id: cat1.id, major_id: maj3.id, category_id: category8.id)
+Requirement.create(catalog_id: cat1.id, major_id: maj3.id, category_id: category9.id)
 
 
 

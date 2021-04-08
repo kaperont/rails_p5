@@ -23,7 +23,7 @@ json.catalog do
 end
 
 json.categories do
-    json.Core @plan.major.requirements do |reqs|
+    json.requirements @plan.major.requirements do |reqs|
         json.courses reqs.category.category_courses do |cc|
             json.id cc.course.designator
         end

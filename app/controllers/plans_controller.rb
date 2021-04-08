@@ -9,6 +9,8 @@ class PlansController < ApplicationController
 
   # GET /plans/1 or /plans/1.json
   def show
+    @requirement = Requirement.where(major_id: @plan.major_id, catalog_id: @plan.catalog_id)
+    
   end
 
   # GET /plans/new
