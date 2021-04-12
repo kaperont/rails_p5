@@ -12,6 +12,7 @@ user1.login = "peront"
 user1.email = "kaper@nice.com"
 user1.password = "password"
 user1.password_confirmation = "password"
+user1.admin = true
 user1.save!
 
 

@@ -1,5 +1,16 @@
 <p id="notice"><%= notice %></p>
 
+<header>
+  <h1>Welcome to the Academic Planning Tool</h1>
+  <% if user_signed_in? %>
+    <h3>Welcome, <%=current_user.login%></h3>
+    <%=button_to "Sign Out", destroy_user_session_path, method: :delete %>
+  <% else %>
+    <%=button_to "Sign in", new_user_session_path, method: :get %>
+    <%=button_to "Sign up", new_user_registration_path, method: :get %>
+  <% end %>
+</header>
+
 <h1>Plans</h1>
 
 <table>
@@ -22,10 +33,16 @@
         <td><%= link_to 'Edit', edit_plan_path(plan) %></td>
         <td><%= link_to 'Destroy', plan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    <% end %>
+    <% end %>    
   </tbody>
 </table>
 
 <br>
+
+<% if current_user.admin %>
+  <%= link_to 'Admin Page', "/plans/admin" %>
+<% end %>
+
+<br><br>
 
 <%= link_to 'New Plan', new_plan_path %>

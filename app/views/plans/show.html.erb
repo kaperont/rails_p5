@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<body onload="load()">
+<body class="bod">
 
     <div id="page-container">
 
@@ -9,7 +9,7 @@
 
             <!--------HEADER CU LOGO-------->
             <a id="logo-link" href="https://www.cedarville.edu">
-                <img id="logo" alt="CU-Logo" src="../img/CU-logo-1.png">
+                <%= image_tag "CU-logo-1.png", :id => 'logo' %>
             </a>
 
             <!--------HEADER TITLE-------->
@@ -22,17 +22,13 @@
             <div id="header-options">
 
                 <!--------JUDAH BUTTON-------->
-                <a class="header-button" id="judah-button" href="http://judah.cedarville.edu/peopleschoice/index.php">
-                    <p class="header-button-text">Judah</p>
-                </a>
+                <%= link_to "Judah", "http://judah.cedarville.edu/peopleschoice/index.php", :class => 'header-button' %>
+
                 <!--------HOME BUTTON-------->
-                <a class="header-button" id="home-button" href="../../cs3220.html">
-                    <p class="header-button-text">Home</p>
-                </a>
+                <%= link_to "Home", "/plans", :class => 'header-button' %>
+
                 <!--------SAVE BUTTON-------->
-                <a class="header-button" id="save-button">
-                    <p class="header-button-text">Save</p>
-                </a>
+                <%= link_to "Sign Out", destroy_user_session_path, :method => :delete, :class => 'header-button' %>
 
             </div>
 
@@ -48,7 +44,6 @@
 
 
                 <!--------REQUIREMENTS DIVISION-------->
-                <script src="../js/setAccordion.js"></script>
 
                 <div class="requirements-division">
                     <div class="section-title">Requirements</div>
@@ -70,15 +65,51 @@
 
                 <!--------VALIDATION STATUS DIVISION-------->
                 <div class="extras-section-division">
-                    <div class="section-title">Kelly Blue Book</div>
+                    <div class="section-title">Plan Selection</div>
                     <div class="extras-section-table">
 
                         <div class="kbb-container">
-                            <script src="../js/kbb.js"></script>
 
-                            <select name="year" class="dropdown" id="drop-menu-1"></select>
-                            <select name="make" class="dropdown" id="drop-menu-2" disabled="true"></select>
-                            <select name="model" class="dropdown" id="drop-menu-3" disabled="true"></select>
+                            <form method="POST" action="./action/updatePlanAction.php">
+
+                                <select name="planName" class="dropdown" id="drop-menu-1">
+
+                                </select>
+
+                                <button type="submit" class="planButton">Change Plan</button>
+
+                            </form>
+
+                            <button class="open-button" onclick="openForm()">Create Plan</button>
+
+                            <div class="form-popup" id="myForm">
+                                <form method="POST" action="./action/createPlanAction.php" class="form-container">
+
+                                    <label for="planName"><b>Plan Name</b></label>
+                                    <input type="text" placeholder="Enter Plan Name" name="planName" required>
+
+                                    <label for="major"><b>Major</b></label>
+                                    <select name="major" id="major" required>
+                                        <option value="">--Select Major--</option>
+                                        <option value="Computer Science">Computer Science</option>
+                                        <option value="Computer Engineering">Computer Engineering</option>
+                                    </select>
+
+                                    <button type="submit" class="btn">Create Plan</button>
+                                    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+
+                                </form>
+                            </div>
+
+                            <script>
+                                function openForm() {
+                                    document.getElementById("myForm").style.display = "block";
+                                }
+
+                                function closeForm() {
+                                    document.getElementById("myForm").style.display = "none";
+                                }
+                            </script>
 
                         </div>
                         
@@ -108,8 +139,6 @@
                         <div id="third-year"></div>
                         <div id="fourth-year"></div>
 
-                        <script src="../js/drag_and_drop.js"></script>
-
                     </div>
                     <!--------/YEARS CONTAINER-------->
 
@@ -121,27 +150,21 @@
                 <!--------COURSE FINDER DIVISION-------->
                 <div class="course-finder-division">
                     <div class="section-title">Course Finder</div>
-                    <div class="course-finder-table">
 
-                        <div class="course-finder-table-header">Course Finder</div>
+                    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
 
-                        <div class="search-bar">
-                            <label for="search-box">Search
-                                <input type="text" placeholder="CS3220" name="search" class="search_box" id="search-box">
-                            </label>
-                            <p id="num-entries">Showing 1 to 12 of 1,900 entries</p>
-                        </div>
-
-                        <div class="course-database">
-                            <div id="course-id">
-                            </div>
-                            <div id="course-name">
-                            </div>
-                            <div id="course-credits">
-                            </div>
-                        </div>
-
-                    </div>
+                    <table id="dataTable" class="display" width="100%">
+                        <thead>
+                            <tr>
+                                <th>Designator</th>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Credits</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
 
                 </div>
                 <!--------/COURSE FINDER DIVISION-------->

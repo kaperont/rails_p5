@@ -12,10 +12,12 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
-require('packs/drag_and_drop')
-require('packs/setAccordion')
-
 require('jquery')
 require('jquery-ui')
 require('datatables.net')
 require('datatables.net-bs4')
+
+require('packs/setAccordion')
+require('packs/setFinder')
+require('packs/p5')
+require('packs/drag_and_drop')

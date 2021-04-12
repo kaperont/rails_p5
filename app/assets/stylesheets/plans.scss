@@ -12,7 +12,7 @@ Purpose:    Project Four page Styles Sheet.
 /******************************************/
 /* Template Comment Seperator             */
 /******************************************/
-body {
+.bod {
     margin: 0;
     background-color: #BDBFC0;
  }
@@ -143,6 +143,12 @@ body {
  
     text-align: center;
     text-decoration: none;
+    text-decoration-color: black;
+    font-weight: 600;
+    font-family: "Arial";
+    font-size: 11pt;
+    text-align: center;
+    justify-content: center;
  }
  
  .header-button:hover {
@@ -329,9 +335,6 @@ body {
     background-color: red;
   }
  
- 
- 
- 
  /******************************************/
  
  
@@ -407,6 +410,7 @@ body {
  .semester-class {
     font-size: 8pt;
     font-family: "Arial";
+    padding-left: 5px;
     margin: 3px 8px;
  }
  
@@ -414,6 +418,22 @@ body {
     background-color: #7EA4B3;
     cursor: pointer;
  }
+
+
+   /*******  Remove Buttons ********/
+   .deleteMe{
+      display:none;
+      
+   }
+   .semester-class:hover .deleteMe{
+      margin-top: 1px;
+      margin-right: 5px;
+      float: right;
+      display: inline;
+      font-size: 8px;
+      background-color: lightblue;
+      border-radius: 100%
+   }
  
  
     /*** FINDER TAB (BOTTOM) ***/
