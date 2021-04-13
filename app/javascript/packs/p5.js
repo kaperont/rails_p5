@@ -100,7 +100,7 @@ let GLOBAL_CREDITS = [];
 
 $.ajax({
     dataType: "json",
-    url: "/plans/1",
+    url: '/plans/1',
     type: "get",
     success: function(data){
 
@@ -180,6 +180,18 @@ function generate_plan(){
             
             // Display Student's Planned Courses
             implement_plan();
+
+            let user_username = ("<b>Student:</b> " + student);
+            $('#user-info-top').append("<p class='user-info-text' id=\"user-username\">" + user_username + "</p>");
+    
+            let user_major = ("<b>Major:</b> " + major);
+            $('#user-info-top').append("<p class='user-info-text' id=\"user-major\">" + user_major + "</p>");
+    
+            let user_catalog = ("<b>Catalog:</b> " + cat_year);
+            $('#user-info-bottom').append("<p class='user-info-text' id=\"user-catalog\">" + user_catalog + "</p>");
+    
+            let user_filler = ("<b>Plan Name:</b> " + plan_name);
+            $('#user-info-bottom').append("<p class='user-info-text' id=\"user-filler\">" + user_filler + "</p>");
 
         }
 
@@ -275,11 +287,12 @@ function addReqs() {
 
                     for(i in core_courses){
                         let text = core_courses[i];
-                        if(core_courses[i] in catalog.courses){
-                            text = text.concat(space, catalog.courses[core_courses[i]].id);
-                        }
-                        else{
-                            text = core_courses[i].id;
+
+                        for(let j = 0; j < catalog.courses.length; j++){
+                            if (core_courses[i].id == catalog.courses[j].id){
+                                text = text.id + space + catalog.courses[j].name;
+                                break;
+                            }
                         }
 
                         let holder = document.createElement("p");
@@ -293,11 +306,11 @@ function addReqs() {
 
                     for(i in electives){
                         let text = electives[i];
-                        if(electives[i] in catalog.courses){
-                            text = text.concat(space, catalog.courses[electives[i]].id);
-                        }
-                        else{
-                            text = electives[i].id;
+                        for(let j = 0; j < catalog.courses.length; j++){
+                            if (electives[i].id == catalog.courses[j].id){
+                                text = text.id + space + catalog.courses[j].name;
+                                break;
+                            }
                         }
 
                         let holder = document.createElement("p");
@@ -311,11 +324,11 @@ function addReqs() {
 
                     for(i in cognates){
                         let text = cognates[i];
-                        if(cognates[i] in catalog.courses){
-                            text = text.concat(space, catalog.courses[cognates[i]].id)
-                        }
-                        else{
-                            text = cognates[i].id;
+                        for(let j = 0; j < catalog.courses.length; j++){
+                            if (cognates[i].id == catalog.courses[j].id){
+                                text = text.id + space + catalog.courses[j].name;
+                                break;
+                            }
                         }
 
                         let holder = document.createElement("p");
@@ -354,8 +367,11 @@ function implement_plan(){
 
         let course_string = designator;
 
-        if(designator in GLOBAL_CATALOG.courses){
-            course_string = course_string.concat(space, GLOBAL_CATALOG.courses[designator].name);
+        for(let i = 0; i < GLOBAL_CATALOG.courses.length; i++){
+            if (designator == GLOBAL_CATALOG.courses[i].id){
+                course_string = course_string.concat(space, GLOBAL_CATALOG.courses[i].name);
+                break;
+            }
         }
 
         let html_id = semester.concat(space, year);

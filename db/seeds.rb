@@ -15,6 +15,14 @@ user1.password_confirmation = "password"
 user1.admin = true
 user1.save!
 
+user2 = User.new
+user2.login = "henig"
+user2.email = "henig@nice.com"
+user2.password = "password"
+user2.password_confirmation = "password"
+user2.admin = false
+user2.save!
+
 
 
 # Create Catalogs
@@ -164,11 +172,11 @@ c7.save!
 # Create PlanCourses
 PlanCourse.create(plan_id: p1.id, course_id: c1.id, term: "Fall", year: 2016)
 PlanCourse.create(plan_id: p1.id, course_id: c2.id, term: "Fall", year: 2016)
-PlanCourse.create(plan_id: p1.id, course_id: c3.id, term: "Fall", year: 2016)
-PlanCourse.create(plan_id: p1.id, course_id: c4.id, term: "Fall", year: 2016)
-PlanCourse.create(plan_id: p1.id, course_id: c5.id, term: "Fall", year: 2016)
-PlanCourse.create(plan_id: p1.id, course_id: c6.id, term: "Fall", year: 2016)
-PlanCourse.create(plan_id: p1.id, course_id: c7.id, term: "Fall", year: 2016)
+PlanCourse.create(plan_id: p1.id, course_id: c3.id, term: "Spring", year: 2017)
+PlanCourse.create(plan_id: p1.id, course_id: c4.id, term: "Spring", year: 2017)
+PlanCourse.create(plan_id: p1.id, course_id: c5.id, term: "Fall", year: 2017)
+PlanCourse.create(plan_id: p1.id, course_id: c6.id, term: "Fall", year: 2017)
+PlanCourse.create(plan_id: p1.id, course_id: c7.id, term: "Spring", year: 2018)
 
 
 

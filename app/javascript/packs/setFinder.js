@@ -11,7 +11,8 @@ function implement_course_finder(){
             let table = $('#dataTable').DataTable({
                 "scrollY": "200px",
                 "scrollCollapse": true,
-                "paging": false
+                "paging": false,
+                "pageLength": 10
             });
 
             for(let i in cat){

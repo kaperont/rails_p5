@@ -88,7 +88,7 @@ Purpose:    Project Four page Styles Sheet.
  #user-info{
     grid-column: 4 / 5;
     display: grid;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: minmax(20px, 30px) minmax(20px, 30px);
  }
  
  #user-info-top{

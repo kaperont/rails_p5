@@ -9,12 +9,16 @@ class PlansController < ApplicationController
 
   # GET /plans/1 or /plans/1.json
   def show
+    @plans = Plan.where(user_id: current_user.id)
+    
     @requirement = Requirement.where(major_id: @plan.major_id, catalog_id: @plan.catalog_id)
   end
 
   # GET /plans/new
   def new
     @plan = Plan.new
+    @catalogs = Catalog.all
+    @majors = Major.all
   end
 
   # GET /plans/1/edit
@@ -67,6 +71,6 @@ class PlansController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def plan_params
-      params.require(:plan).permit(:name, :current_year, :current_semester, :user_id)
+      params.require(:plan).permit(:name, :current_year, :current_semester, :user_id, :catalog_id, :major_id)
     end
 end

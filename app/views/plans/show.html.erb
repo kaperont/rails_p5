@@ -18,6 +18,12 @@
             <!--------WEBSITE VERSION-------->
             <p id="version-number">version 1.0</p>
 
+            <!--------USER INFORMATION-------->
+            <div id="user-info">
+                <div id="user-info-top"></div>
+                <div id="user-info-bottom"></div>
+            </div>
+
             <!--------HEADER BUTTONS CONTAINER-------->
             <div id="header-options">
 
@@ -25,7 +31,7 @@
                 <%= link_to "Judah", "http://judah.cedarville.edu/peopleschoice/index.php", :class => 'header-button' %>
 
                 <!--------HOME BUTTON-------->
-                <%= link_to "Home", "/plans", :class => 'header-button' %>
+                <%= link_to "Home", plans_path, :class => 'header-button' %>
 
                 <!--------SAVE BUTTON-------->
                 <%= link_to "Sign Out", destroy_user_session_path, :method => :delete, :class => 'header-button' %>
@@ -70,15 +76,14 @@
 
                         <div class="kbb-container">
 
-                            <form method="POST" action="./action/updatePlanAction.php">
 
-                                <select name="planName" class="dropdown" id="drop-menu-1">
+                            <%= select_tag :sort, options_for_select(@plans.collect{ |plan| [plan.name, plan.id] }), :onchange => 'changepage(this.value)', include_blank: true, :class => 'dropdown' %>
 
-                                </select>
-
-                                <button type="submit" class="planButton">Change Plan</button>
-
-                            </form>
+                            <script>
+                                function changepage(value){
+                                    window.location = ("http://localhost:3000/plans/" + value);
+                                }
+                            </script>
 
                             <button class="open-button" onclick="openForm()">Create Plan</button>
 
@@ -180,6 +185,3 @@
     </div>
     
 </body>
-
-<%= link_to 'Edit', edit_plan_path(@plan) %> |
-<%= link_to 'Back', plans_path %>

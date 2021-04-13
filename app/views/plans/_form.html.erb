@@ -26,6 +26,16 @@
     <%= form.text_field :current_semester %>
   </div>
 
+  <div class="field">
+    <%= form.label :catalog_id %>
+    <%= form.select :catalog_id, options_for_select(@catalogs.collect{ |cat| [cat.year, cat.id] }) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :major_id %>
+    <%= form.select :major_id, options_for_select(@majors.collect{ |maj| [maj.name, maj.id] }) %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
