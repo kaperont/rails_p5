@@ -441,14 +441,21 @@ function dragAndDrop(){
             
             let credit_text;
             var droppableItem = $(ui.draggable).clone();
-            //alert(ui.draggable.attr('class') + ' was dropped from ' + ui.draggable.parent().attr('class'))
+
+            ui.draggable.parent().children().last().remove();
+            let oldId = ui.draggable.parent().attr('id');
             let course_p = document.createElement("p");
             course_p.setAttribute("class", "semester-class");
             course_p.setAttribute("draggable", "true");
-        
             let tempText = droppableItem.text();
+            
+            let oldCreditsString ="null";
+            //if tempText is a class already in the plan
             if(tempText.charAt(tempText.length - 1) == 'X'){
                 tempText = tempText.slice(0, -1);
+                let parentObj = ui.draggable.parent();
+                oldCreditsString = parentObj.children().last().text();
+                parentObj.children().last().remove();
                 $(ui.draggable).remove(); //this means that it was in plan if it has an X
 
             }
@@ -466,6 +473,12 @@ function dragAndDrop(){
         
             ////////// Change Credits ////////////
             var creditsString = $(this).children().last().text();
+            if(oldCreditsString != "null"){
+                var oldCreditsStringArr = oldCreditsString.split(" ");
+                var oldCreditCount = parseInt(oldCreditsStringArr[1]);
+            }
+            
+            
             if(!creditsString.includes("CREDITS: ")){
                 creditCount = 0;
             }
@@ -477,8 +490,8 @@ function dragAndDrop(){
                 $(this).children().last().remove()
             }
             creditCount += ClassNameToCredits(tempText);
+            oldCreditCount -=ClassNameToCredits(tempText);
             /////////Change Credits End ///////////
-
             $(this).append(course_p);
             $(course_p).appendTo(this).draggable();
             changeCourseColor(tempText, 'green');
@@ -488,7 +501,13 @@ function dragAndDrop(){
             credit_text = document.createTextNode("CREDITS: " + creditCount);
             credit_p.appendChild(credit_text);
             $(this).append(credit_p);
-    
+            if(oldCreditsString != "null"){
+            credit_p = document.createElement("p");
+            credit_p.setAttribute("class", "semester-header");
+            credit_text = document.createTextNode("CREDITS: " + oldCreditCount);
+            credit_p.appendChild(credit_text);
+            document.getElementById(oldId).append(credit_p);
+            }
         }
 
     });
