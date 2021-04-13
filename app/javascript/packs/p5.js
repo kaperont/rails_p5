@@ -97,10 +97,11 @@ class Plan {
 //////////////////////////////// GLOBAL CLASS CREDIT RELATION ///////////////////////////
 let GLOBAL_COURSES = [];
 let GLOBAL_CREDITS = [];
+let GLOBAL_URL = window.location.href;
 
 $.ajax({
     dataType: "json",
-    url: '/plans/1',
+    url: window.location.href,
     type: "get",
     success: function(data){
 
@@ -150,7 +151,7 @@ function generate_plan(){
 
     $.ajax({
         dataType: "json",
-        url: "/plans/1",
+        url: window.location.href,
         type: "get",
         success: function(data){
 
@@ -268,7 +269,7 @@ function addReqs() {
     
     $.ajax({
         dataType: "json",
-        url: "/plans/1",
+        url: window.location.href,
         type: "get",
         success: function(data){
 
@@ -278,7 +279,7 @@ function addReqs() {
 
             $.ajax({
                 dataType: "json",
-                url: "/plans/1",
+                url: window.location.href,
                 type: "get",
                 success: function(data){
 
